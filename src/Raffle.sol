@@ -152,7 +152,7 @@ contract Raffle is VRFConsumerBaseV2Plus {
     function fulfillRandomWords(uint256, /*requestId*/ uint256[] calldata randomWords) internal virtual override {
         uint256 winnerTicket = randomWords[0] % s_totalTickets;
         address payable winnerAddress;
-        uint ticketRanges = s_ticketRanges.length;
+        uint256 ticketRanges = s_ticketRanges.length;
         for (uint256 i = 0; i < ticketRanges; i++) {
             if (winnerTicket >= s_ticketRanges[i].start && winnerTicket <= s_ticketRanges[i].end) {
                 winnerAddress = s_ticketRanges[i].owner;
